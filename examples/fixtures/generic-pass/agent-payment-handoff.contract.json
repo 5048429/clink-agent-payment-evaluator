@@ -1,0 +1,19 @@
+{
+  "server": "generic-merchant-runtime",
+  "confirm_tool": "exec",
+  "confirm_args": {
+    "command": "./check_recharge_status.sh",
+    "token": "{merchant_runtime_token}",
+    "order_id": "{clink_order_id}",
+    "session_id": "{optional_clink_session_id}"
+  },
+  "payment_handoff": {
+    "merchant_id": "mcht_evaldemo123",
+    "order_id": "{clink_order_id}",
+    "session_id": "{optional_clink_session_id}",
+    "status": "succeeded",
+    "amount": 1,
+    "currency": "USD",
+    "merchant_reference": "{merchant_request_id}"
+  }
+}

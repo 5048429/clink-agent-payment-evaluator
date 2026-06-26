@@ -1,0 +1,31 @@
+{
+  "evaluationId": "pollyreach-uat-agent-payment",
+  "environment": "uat",
+  "expected": {
+    "merchantId": "mcht_fh2xm6jwdzse",
+    "amount": 1,
+    "currency": "USD",
+    "merchantApiBaseUrl": "https://api-test.pollyreach.ai",
+    "clinkApiBaseUrl": "https://uat-api.clinkbill.com"
+  },
+  "live": {
+    "email": "5048429@qq.com",
+    "name": "Clink Agent Payment Eval",
+    "merchantIntegration": {
+      "server": "pollyreach-agent-runtime",
+      "confirm_tool": "exec",
+      "confirm_args": {}
+    },
+    "notify": {
+      "channel": "webchat",
+      "target_id": "main",
+      "target_type": "target_id",
+      "locale": "zh-CN"
+    }
+  },
+  "merchantConfirmation": {
+    "type": "http-get",
+    "urlTemplate": "https://api-test.pollyreach.ai/platform/v1/payment/recharge/check?order_id={order_id}",
+    "bearerTokenEnv": "POLLYREACH_TOKEN"
+  }
+}

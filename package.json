@@ -1,0 +1,15 @@
+{
+  "name": "clink-agent-payment-evaluator",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "bin": {
+    "clink-agent-payment-eval": "bin/evaluate.mjs"
+  },
+  "scripts": {
+    "eval": "node bin/evaluate.mjs",
+    "test": "node scripts/run-fixture-tests.mjs",
+    "eval:fixture:pass": "node bin/evaluate.mjs --skill examples/fixtures/generic-pass --profile examples/generic-uat.profile.json --out reports/generic-pass.report.json",
+    "eval:pollyreach": "node bin/evaluate.mjs --skill ../pollyreach_clink_skill_agent_payment_uat_mcht_fh2xm6jwdzse.zip --profile examples/pollyreach-uat.profile.json --out reports/pollyreach-static.report.json"
+  }
+}

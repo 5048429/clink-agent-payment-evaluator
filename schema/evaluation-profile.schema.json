@@ -1,0 +1,99 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Clink Agent Payment Evaluation Profile",
+  "type": "object",
+  "required": ["expected"],
+  "properties": {
+    "evaluationId": {
+      "type": "string"
+    },
+    "environment": {
+      "type": "string",
+      "enum": ["uat", "sandbox", "production", "local"]
+    },
+    "expected": {
+      "type": "object",
+      "required": ["merchantId", "amount", "currency"],
+      "properties": {
+        "merchantId": {
+          "type": "string",
+          "pattern": "^mcht_[a-z0-9]+$"
+        },
+        "amount": {
+          "type": "number",
+          "exclusiveMinimum": 0
+        },
+        "currency": {
+          "type": "string",
+          "pattern": "^[A-Z]{3}$"
+        },
+        "merchantApiBaseUrl": {
+          "type": "string",
+          "format": "uri"
+        },
+        "clinkApiBaseUrl": {
+          "type": "string",
+          "format": "uri"
+        }
+      }
+    },
+    "live": {
+      "type": "object",
+      "properties": {
+        "email": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "merchantIntegration": {
+          "type": "object",
+          "required": ["server", "confirm_tool"],
+          "properties": {
+            "server": {
+              "type": "string"
+            },
+            "confirm_tool": {
+              "type": "string"
+            },
+            "confirm_args": {
+              "type": "object"
+            }
+          }
+        },
+        "notify": {
+          "type": "object",
+          "properties": {
+            "channel": {
+              "type": "string"
+            },
+            "target_id": {
+              "type": "string"
+            },
+            "target_type": {
+              "type": "string"
+            },
+            "locale": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    },
+    "merchantConfirmation": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "type": "string",
+          "enum": ["http-get"]
+        },
+        "urlTemplate": {
+          "type": "string"
+        },
+        "bearerTokenEnv": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}

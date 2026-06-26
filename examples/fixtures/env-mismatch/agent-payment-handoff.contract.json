@@ -1,0 +1,12 @@
+{
+  "server": "generic-merchant-runtime",
+  "confirm_tool": "exec",
+  "confirm_args": {
+    "command": "./check_recharge_status.sh",
+    "order_id": "{clink_order_id}"
+  },
+  "payment_handoff": {
+    "order_id": "{clink_order_id}",
+    "status": "succeeded"
+  }
+}

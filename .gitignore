@@ -1,0 +1,9 @@
+node_modules/
+.env
+.env.*
+*.log
+reports/*.report.json
+reports/*.report.md
+reports/*.tmp.json
+reports/*.tmp.md
+!reports/.gitkeep

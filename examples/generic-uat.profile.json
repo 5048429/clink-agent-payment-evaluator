@@ -1,0 +1,31 @@
+{
+  "evaluationId": "generic-uat-agent-payment",
+  "environment": "uat",
+  "expected": {
+    "merchantId": "mcht_evaldemo123",
+    "amount": 1,
+    "currency": "USD",
+    "merchantApiBaseUrl": "https://api-test.example.com",
+    "clinkApiBaseUrl": "https://uat-api.clinkbill.com"
+  },
+  "live": {
+    "email": "agent-payment-eval@example.com",
+    "name": "Clink Agent Payment Eval",
+    "merchantIntegration": {
+      "server": "generic-merchant-runtime",
+      "confirm_tool": "exec",
+      "confirm_args": {}
+    },
+    "notify": {
+      "channel": "webchat",
+      "target_id": "main",
+      "target_type": "target_id",
+      "locale": "en-US"
+    }
+  },
+  "merchantConfirmation": {
+    "type": "http-get",
+    "urlTemplate": "https://api-test.example.com/platform/v1/payment/recharge/check?order_id={order_id}",
+    "bearerTokenEnv": "MERCHANT_TEST_TOKEN"
+  }
+}
