@@ -128,8 +128,32 @@ function loadTexts(root) {
   return { files, texts, corpus: texts.map((item) => `\n--- ${item.rel} ---\n${item.content}`).join("\n") };
 }
 
+function normalizeUrlCandidate(rawValue) {
+  let value = rawValue.trim();
+
+  for (let index = 0; index < 8 && value; index += 1) {
+    const next = value
+      .replace(/[`*]+$/g, "")
+      .replace(/[,\.;]+$/g, "")
+      .replace(/[\]\)]+$/g, "")
+      .replace(/\}+$/g, "");
+
+    if (next === value) break;
+    value = next;
+  }
+
+  try {
+    new URL(value);
+    return value;
+  } catch {
+    return null;
+  }
+}
+
 function urlsIn(text) {
-  return [...text.matchAll(/https?:\/\/[^\s)"'<>]+/g)].map((match) => match[0].replace(/[),.;]+$/, ""));
+  return [...text.matchAll(/https?:\/\/[^\s)"'<>]+/g)]
+    .map((match) => normalizeUrlCandidate(match[0]))
+    .filter(Boolean);
 }
 
 function merchantIdsIn(text) {

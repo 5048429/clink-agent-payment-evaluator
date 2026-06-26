@@ -31,4 +31,4 @@ After payment success, call merchant confirmation exactly once and resume only a
 ./check_recharge_status.sh <token> <order_id> [session_id]
 ```
 
-Merchant confirmation uses https://api-test.example.com/platform/v1/payment/recharge/check.
+Merchant confirmation uses `https://api-test.example.com/platform/v1/payment/recharge/check`.

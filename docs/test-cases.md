@@ -46,6 +46,7 @@ What the evaluator checks:
 - Merchant confirmation runs after payment success and before task resume.
 - Failure semantics cover 3DS, card decline, risk block, timeout, and failed payment statuses.
 - Merchant API URLs match `expected.merchantApiBaseUrl` in the profile.
+- URL extraction avoids false environment warnings from common Markdown and shell forms such as code-span URLs and `${VAR:-https://api-test.example.com}` defaults.
 
 ## Case 2: Environment Mismatch
 
